@@ -15,6 +15,20 @@
 //     return view('welcome');
 // });
 
-Route::get('/', "abcController@index");
+Route::get('/', "FrontController@index");
+
+// Route::get('/index', "FrontController@index");
+
+Route::get('/news', "FrontController@news");
+
+Route::get('/news_info', "FrontController@news_info");
+
+Route::get('/contact_us', "FrontController@contact_us");
 
 
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
