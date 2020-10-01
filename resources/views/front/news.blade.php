@@ -2,13 +2,13 @@
 
 
 @section('css')
-<link rel="stylesheet" href="./css/news.css">
+<link rel="stylesheet" href="/css/news.css">
 @endsection
 
 @section('content')
 <main role="main">
     <section class="news">
-        <div class="container" style="margin-top: 20px">
+        <div class="container">
             <h2 class="news_title">最新消息</h2>
             <div class="row news_lists">
 

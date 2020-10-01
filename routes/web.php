@@ -25,7 +25,14 @@ Route::get('/news_info/{news_id}', "FrontController@news_info");
 
 Route::get('/contact_us', "FrontController@contact_us");
 
+// Route::get('/admin', "LoginController@admin");
+Route::get('/admin', "LoginController@admin")->middleware('auth');
 
+Route::post('/send_data', "FrontController@send");
+
+Route::post('/news_manage', "LoginController@news_manage");
+
+Route::get('/success', "FrontController@success");
 
 
 

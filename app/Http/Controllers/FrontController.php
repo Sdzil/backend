@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
+
 use Illuminate\Support\Facades\DB;
+
+use App\Attraction;
 
 
 
@@ -55,5 +59,17 @@ class FrontController extends Controller
     {
         return view('front/contact_us');
     }
+
+    public function send(Request $request)
+    {
+
+        Attraction::create($request->all());
+    }
+
+    public function success()
+    {
+        return view('front/success');
+    }
+
 
 }

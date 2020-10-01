@@ -5,7 +5,7 @@
      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
      <!-- page css -->
-     <link rel="stylesheet" href="./css/index.css">
+     <link rel="stylesheet" href="/css/index.css">
 @endsection
 
 
