@@ -24,7 +24,7 @@ class FrontController extends Controller
 
     // dd($news_list);
 
-    public function index()
+    public function index1()
     {
         $news_list = DB::table('news')
             ->orderBy('id', 'desc')
@@ -33,7 +33,7 @@ class FrontController extends Controller
 
         // dd($news_list);
 
-        return view('front/index', compact('news_list'));
+        return view('front/index1', compact('news_list'));
     }
 
     public function news()
@@ -71,5 +71,9 @@ class FrontController extends Controller
         return view('front/success');
     }
 
+    // public function testfunciotn1()
+    // {
+    //     return view("datatables.index");
+    // }
 
 }

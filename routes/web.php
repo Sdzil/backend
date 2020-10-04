@@ -15,7 +15,10 @@
 //     return view('welcome');
 // });
 
-Route::get('/', "FrontController@index");
+Route::get('/', "FrontController@index1");
+// Route::get('/', "FrontController@testfunciotn1");
+
+
 
 // Route::get('/index', "FrontController@index");
 
@@ -34,8 +37,26 @@ Route::post('/news_manage', "LoginController@news_manage");
 
 Route::get('/success', "FrontController@success");
 
+Route::get('/data', "LoginController@data");
 
+Route::resource('/sample', 'SampleController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//controller在5.3板之後已不推薦使用，所以改用resource或者get或post
+// Route::controller('/datatables', 'DatatablesController', [
+//     'anyData'  => 'datatables.data',
+//     'getIndex' => 'datatables'
+// ]);
+
+// Route::resource('/datatables', 'DatatablesController', [
+//     'anyData'  => 'datatables.data',
+//     'getIndex' => 'datatables'
+// ]);
+
+Route::get('datatables', 'DatatablesController@getIndex');
+Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.data');
+
+
