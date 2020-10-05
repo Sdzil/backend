@@ -42,7 +42,7 @@ Route::get('/success', "FrontController@success");
 
 Route::get('/data', "LoginController@data");
 
-Route::resource('/sample', 'SampleController');
+Route::resource('sample', 'SampleController');
 
 Auth::routes();
 

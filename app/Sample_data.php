@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sample_data extends Model
 {
 
-    protected $table = 'users';
+    protected $table = 'sample_datas';
 
     protected $fillable =[
-        'id', 'name', 'email', 'created_at', 'updated_at'
+        'id', 'first_name', 'last_name', 'created_at', 'updated_at'
     ];
 }
