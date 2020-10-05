@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class attraction extends Model
+class Attraction extends Model
 {
-    //
     protected $fillable = [
-        'email', 'location', 'image_src', 'location_name', 'info'
+        'email', 'location', 'image_url', 'placeName', 'info'
     ];
 
-    protected $table = "attractions";
 }
