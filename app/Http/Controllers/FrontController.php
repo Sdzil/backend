@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-
+use App\attraction;
 
 class FrontController extends Controller
 {
@@ -41,11 +41,11 @@ class FrontController extends Controller
         return view('front/news', compact('news_list_all'));
     }
 
-    public function news_info($news_id)
+    public function news_info($abc)
     {
-
+        //$abc = title6
         $news_list_all = DB::table('news')
-            ->where('id', '=', $news_id)
+            ->where('id', '=', $abc)
             ->first();
         // dd($news_list_all);
         return view('front/news_info', compact('news_list_all'));
@@ -54,6 +54,23 @@ class FrontController extends Controller
     public function contact_us()
     {
         return view('front/contact_us');
+    }
+
+    public function get_form(Request $request)
+    {
+        // dd($request->all());
+
+        // DB::table('attractions')->insert(
+        //     ['email' => $request->email,
+        //      'location' => $request->location,
+        //      'image_src' => '',
+        //      'location_name' => $request->location_name,
+        //      'info' => $request->info
+        //      ]
+        // );
+
+        attraction::create($request->all());
+
     }
 
 }
