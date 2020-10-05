@@ -1,7 +1,7 @@
 @extends('layouts/nav_footer')
 
 @section('css')
-    <link rel="stylesheet" href="./css/news_info.css">
+    <link rel="stylesheet" href="/css/news_info.css">
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 <main role="main">
     <section class="news_info">
     {{-- {{$news_list_all}} --}}
-        <div class="container" style="margin-top: 20px">
+        <div class="container">
             <h2 class="info_title">{{$news_list_all->title}}</h2>
             <div class="row">
                 <div class="col-12 my-3 my-md-0 col-md-6">

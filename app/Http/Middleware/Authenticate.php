@@ -16,6 +16,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return route('login');
+            //如果認證失敗 導引到想要的網頁去
         }
     }
 }

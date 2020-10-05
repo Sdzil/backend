@@ -11,6 +11,9 @@ class News extends Model
      *
      * @var array
      */
+
+    protected $table = 'news';
+
     protected $fillable = [
         'title', 'sub_title', 'content', 'image_url'
     ];
