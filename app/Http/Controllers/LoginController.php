@@ -12,27 +12,32 @@ use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
-    public function admin()
-    {
-        return view('backend/admin');
-    }
+    // public function admin()
+    // {
+    //     return view('backend/admin');
+    // }
 
-    public function news_manage(Request $request)
-    {
-        News::create($request->all());
-        //插入個輸入成功的畫面
-        //10/01 暫時OK
-        return redirect('/success');
-    }
+    // public function news_manage(Request $request)
+    // {
+    //     News::create($request->all());
+    //     //插入個輸入成功的畫面
+    //     //10/01 暫時OK
+    //     return redirect('/success');
+    // }
 
-    public function data()
-    {
-        $news_list_all = DB::table('news')
-            ->orderBy('id', 'desc')
-            ->get();
+    // public function success()
+    // {
+    //     return view('front/success');
+    // }
 
-        return view('backend/datatable', compact('news_list_all'));
-    }
+    // public function data()
+    // {
+    //     $news_list_all = DB::table('news')
+    //         ->orderBy('id', 'desc')
+    //         ->get();
+
+    //     return view('backend/datatable', compact('news_list_all'));
+    // }
 
 }
 

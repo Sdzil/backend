@@ -34,7 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/news">最新消息管理</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">產品管理</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

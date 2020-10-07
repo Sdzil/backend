@@ -23,6 +23,7 @@ class SampleController extends Controller
         if($request->ajax())
         {
             $data = Sample_data::latest()->get();
+            dd($data);
             return DataTables::of($data)
                     ->addColumn('action', function($data){
                         $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';

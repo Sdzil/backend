@@ -24,7 +24,7 @@ class FrontController extends Controller
 
     // dd($news_list);
 
-    public function index1()
+    public function index()
     {
         $news_list = DB::table('news')
             ->orderBy('id', 'desc')
@@ -33,7 +33,7 @@ class FrontController extends Controller
 
         // dd($news_list);
 
-        return view('front/index1', compact('news_list'));
+        return view('front/index', compact('news_list'));
     }
 
     public function news()
@@ -62,31 +62,18 @@ class FrontController extends Controller
 
     public function get_form(Request $request)
     {
-        // dd($request->all());
-
-        // DB::table('attractions')->insert(
-        //     ['email' => $request->email,
-        //      'location' => $request->location,
-        //      'image_src' => '',
-        //      'location_name' => $request->location_name,
-        //      'info' => $request->info
-        //      ]
-        // );
 
         Attraction::create($request->all());
-
+        return redirect('contact_us');
     }
 
-    public function send(Request $request)
-    {
+    // public function send(Request $request)
+    // {
 
-        Attraction::create($request->all());
-    }
+    //     Attraction::create($request->all());
+    // }
 
-    public function success()
-    {
-        return view('front/success');
-    }
+    
 
     // public function testfunciotn1()
     // {

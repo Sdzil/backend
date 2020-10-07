@@ -51,7 +51,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInput">景點名稱</label>
-                    <input name="location_name" type="text" class="form-control" id="exampleInput" aria-describedby="title">
+                    <input name="placeName" type="text" class="form-control" id="exampleInput" aria-describedby="title">
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">景點詳述</label>

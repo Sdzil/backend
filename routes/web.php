@@ -15,10 +15,8 @@
 //     return view('welcome');
 // });
 
-Route::get('/', "FrontController@index1");
-// Route::get('/', "FrontController@testfunciotn1");
-
-
+//前端頁面
+Route::get('/', "FrontController@index");
 
 // Route::get('/index', "FrontController@index");
 
@@ -31,22 +29,25 @@ Route::get('/news_info/{something}', "FrontController@news_info");
 Route::get('/contact_us', "FrontController@contact_us");
 
 Route::post('/get_something', "FrontController@get_form");
-// Route::get('/admin', "LoginController@admin");
-Route::get('/admin', "LoginController@admin")->middleware('auth');
 
-Route::post('/send_data', "FrontController@send");
+//登入驗證測試
+// Route::get('/admin', "LoginController@admin")->middleware('auth');
 
-Route::post('/news_manage', "LoginController@news_manage");
+// Route::post('/send_data', "FrontController@send");
 
-Route::get('/success', "FrontController@success");
+// Route::post('/news_manage', "LoginController@news_manage");
 
-Route::get('/data', "LoginController@data");
+// Route::get('/success', "LoginController@success");
+
+// Route::get('/data', "LoginController@data");
 
 Route::resource('sample', 'SampleController');
 
-Auth::routes();
+Route::post('sample/update', 'SampleController@update')->name('sample.update');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['register' => false,'reset' => false]);
+
+Route::get('/admin', 'HomeController@index')->name('home');
 
 //controller在5.3板之後已不推薦使用，所以改用resource或者get或post
 // Route::controller('/datatables', 'DatatablesController', [
@@ -66,9 +67,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     Route::get('news', 'NewsController@index');
     Route::get('news/create', 'NewsController@create');
-    Route::get('news/store', 'NewsController@store');
-    Route::get('news/edit', 'NewsController@edit');
-    Route::get('news/update', 'NewsController@update');
-    Route::get('news/destory', 'NewsController@destory');
+    Route::post('news/store', 'NewsController@store');
+    Route::get('news/edit/{id}', 'NewsController@edit');
+    Route::post('news/update/{id}', 'NewsController@update');
+    Route::get('news/destory/{id}', 'NewsController@destroy');
 
 });

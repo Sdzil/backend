@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -13,7 +14,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('\admin\news\index');
+
+        $news_list = DB::table('news')->get();
+        return view('.admin.news.index', compact('news_list'));
     }
 
     /**
@@ -23,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        dd("015566");
     }
 
     /**
@@ -34,7 +37,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd("025566");
     }
 
     /**
@@ -45,7 +48,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        dd("035566");
     }
 
     /**
@@ -56,7 +59,7 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd("045566");
     }
 
     /**
@@ -68,7 +71,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("055566");
     }
 
     /**
@@ -79,6 +82,6 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd("065566");
     }
 }
