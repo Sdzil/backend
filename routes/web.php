@@ -62,4 +62,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('datatables', 'DatatablesController@getIndex');
 Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.data');
 
+Route::prefix('admin')->middleware(['auth'])->group(function(){
 
+    Route::get('news', 'NewsController@index');
+    Route::get('news/create', 'NewsController@create');
+    Route::get('news/store', 'NewsController@store');
+    Route::get('news/edit', 'NewsController@edit');
+    Route::get('news/update', 'NewsController@update');
+    Route::get('news/destory', 'NewsController@destory');
+
+});

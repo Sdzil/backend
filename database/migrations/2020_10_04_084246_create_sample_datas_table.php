@@ -15,6 +15,8 @@ class CreateSampleDatasTable extends Migration
     {
         Schema::create('sample_datas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->timestamps();
         });
     }
