@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlFile1">上傳照片</label>
-                    <input name="image_src" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input name="image_url" type="file" class="form-control-file" id="exampleFormControlFile1">
                   </div>
                   <div class="form-group">
                     <label for="exampleInput">景點名稱</label>

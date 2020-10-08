@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
+use App\Item;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\File;
 
-class NewsController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-
-        $news_list = DB::table('news')->get();
-        return view('.admin.news.index', compact('news_list'));
+        $items_list = DB::table('items')->get();
+        return view('.admin.items.index', compact('items_list'));
     }
 
     /**
@@ -29,7 +29,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.items.create');
     }
 
     /**
@@ -44,12 +44,12 @@ class NewsController extends Controller
 
         if ($request->hasFile('image_url')) {
             $file = $request->file('image_url');
-            $path = $this->fileUpload($file, 'news');
+            $path = $this->fileUpload($file, 'items');
             $requestData['image_url'] = $path;
         }
 
-        News::create($requestData);
-        return redirect('admin/news');
+        Item::create($requestData);
+        return redirect('admin/items');
     }
 
     /**
@@ -60,7 +60,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        dd("035566");
+        dd("3345678");
     }
 
     /**
@@ -71,9 +71,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $edit_news = News::find($id);
+        $edit_items = Item::find($id);
         // dd($edit_news);
-        return view('admin.news.edit', compact('edit_news'));
+        return view('admin.items.edit', compact('edit_items'));
     }
 
     /**
@@ -85,7 +85,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $item = News::find($id);
+        $item = Item::find($id);
 
         $requestData = $request->all();
 
@@ -93,7 +93,7 @@ class NewsController extends Controller
 
             $old_image = $item->image_url;
             $file = $request->file('image_url');
-            $path = $this->fileUpload($file, 'news');
+            $path = $this->fileUpload($file, 'items');
             $requestData['image_url'] = $path;
             File::delete(public_path() . $old_image);
 
@@ -101,7 +101,7 @@ class NewsController extends Controller
 
         $item->update($requestData);
 
-        return redirect('/admin/news');
+        return redirect('/admin/items');
     }
 
     /**
@@ -112,7 +112,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $item = News::find($id);
+        $item = Item::find($id);
         //  dd($item);
         if ($item->image_url != '') {
 
@@ -125,11 +125,8 @@ class NewsController extends Controller
         }
 
         $item->delete();
-        
-        return redirect('/admin/news');
 
-
-
+        return redirect('/admin/items');
     }
 
     private function fileUpload($file, $dir)

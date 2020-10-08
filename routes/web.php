@@ -65,11 +65,21 @@ Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.
 
 Route::prefix('admin')->middleware(['auth'])->group(function(){
 
+
+    //最新消息管理
     Route::get('news', 'NewsController@index');
     Route::get('news/create', 'NewsController@create');
     Route::post('news/store', 'NewsController@store');
     Route::get('news/edit/{id}', 'NewsController@edit');
     Route::post('news/update/{id}', 'NewsController@update');
     Route::get('news/destory/{id}', 'NewsController@destroy');
+
+    //產品管理
+    Route::get('items', 'ItemsController@index');
+    Route::get('items/create', 'ItemsController@create');
+    Route::post('items/store', 'ItemsController@store');
+    Route::get('items/edit/{id}', 'ItemsController@edit');
+    Route::post('items/update/{id}', 'ItemsController@update');
+    Route::get('items/destory/{id}', 'ItemsController@destroy');
 
 });
