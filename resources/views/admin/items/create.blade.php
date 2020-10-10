@@ -12,8 +12,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">後臺</a></li>
-            <li class="breadcrumb-item"><a href="/admin/news">最新消息管理</a></li>
-            <li class="breadcrumb-item active" aria-current="page">新增最新消息</li>
+            <li class="breadcrumb-item"><a href="/admin/items">產品管理</a></li>
+            <li class="breadcrumb-item active" aria-current="page">新增產品</li>
             </ol>
         </nav>
 
@@ -22,13 +22,13 @@
             @csrf
 
             <div class="form-group">
-                <label for="title">標題</label>
-                <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" required>
+                <label for="itemName">產品名稱</label>
+                <input name="itemName" type="text" class="form-control" id="itemName" aria-describedby="emailHelp" required>
             </div>
 
             <div class="form-group">
-                <label for="sub_title">副標題</label>
-                <input name="sub_title" type="text" class="form-control" id="sub_title" aria-describedby="emailHelp" required>
+                <label for="price">價錢</label>
+                <input name="price" type="number" class="form-control" id="price" aria-describedby="emailHelp" required>
             </div>
 
               <div class="form-group">

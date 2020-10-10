@@ -12,8 +12,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">後臺</a></li>
-            <li class="breadcrumb-item"><a href="/admin/news">最新消息管理</a></li>
-            <li class="breadcrumb-item active" aria-current="page">編輯最新消息</li>
+            <li class="breadcrumb-item"><a href="/admin/news">產品管理</a></li>
+            <li class="breadcrumb-item active" aria-current="page">編輯產品</li>
             </ol>
         </nav>
     <form method="POST" action="/admin/news/update/{{$edit_news->id}}" enctype="multipart/form-data">

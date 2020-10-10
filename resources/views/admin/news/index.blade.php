@@ -44,7 +44,7 @@
             <td>{{$item->content}}</td>
             <td>
                 <a href="news/edit/{{$item->id}}" class="btn btn-sm btn-primary">編輯</a>
-                <a href="news/destory/{{$item->id}}" class="btn btn-sm btn-danger">刪除</a>
+                <a href="news/destroy/{{$item->id}}" class="btn btn-sm btn-danger">刪除</a>
                 {{-- <button class="btn btn-sm btn-danger">刪除</button> --}}
             </td>
         </tr>
@@ -69,7 +69,9 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            "order": [1,"desc"]
+        });
     } );
     </script>
 @endsection

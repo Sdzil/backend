@@ -63,6 +63,8 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::get('datatables', 'DatatablesController@getIndex');
 Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.data');
 
+
+//後台管理系統的Route，群組之後統一在admin做中介認證
 Route::prefix('admin')->middleware(['auth'])->group(function(){
 
 
@@ -72,14 +74,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::post('news/store', 'NewsController@store');
     Route::get('news/edit/{id}', 'NewsController@edit');
     Route::post('news/update/{id}', 'NewsController@update');
-    Route::get('news/destory/{id}', 'NewsController@destroy');
+    Route::get('news/destroy/{id}', 'NewsController@destroy');
 
     //產品管理
-    Route::get('items', 'ItemsController@index');
-    Route::get('items/create', 'ItemsController@create');
-    Route::post('items/store', 'ItemsController@store');
-    Route::get('items/edit/{id}', 'ItemsController@edit');
-    Route::post('items/update/{id}', 'ItemsController@update');
-    Route::get('items/destory/{id}', 'ItemsController@destroy');
+    Route::get('items', 'ItemController@index');
+    Route::get('items/create', 'ItemController@create');
+    Route::post('items/store', 'ItemController@store');
+    Route::get('items/edit/{id}', 'ItemController@edit');
+    Route::post('items/update/{id}', 'ItemController@update');
+    Route::get('items/destroy/{id}', 'ItemController@destroy');
 
 });
