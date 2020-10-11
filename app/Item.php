@@ -9,7 +9,12 @@ class Item extends Model
     protected $table = 'items';
 
     protected $fillable = [
-        'itemName', 'price', 'image_url', 'content'
+        'itemName', 'price', 'image_url', 'content', 'type_id'
     ];
+
+    public function itemsType()
+    {
+        return $this->belongsTo('App\ItemType','id');
+    }
 }
 

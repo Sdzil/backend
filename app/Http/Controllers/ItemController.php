@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\ItemType;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -18,8 +19,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items_list = DB::table('items')->get();
-        return view('.admin.items.index', compact('items_list'));
+        // $items_list = DB::table('items')->get();
+        $items_type = ItemType::with('items')->get();
+        
+        return view('.admin.items.index', compact('items_type'));
     }
 
     /**
