@@ -62,6 +62,7 @@
                     <th>價格</th>
                     <th>圖片</th>
                     <th>內文</th>
+                    <th>產品類別</th>
                     <th>功能</th>
                 </tr>
             </tfoot>
