@@ -45,7 +45,8 @@ Route::resource('sample', 'SampleController');
 
 Route::post('sample/update', 'SampleController@update')->name('sample.update');
 
-Auth::routes(['register' => false,'reset' => false]);
+// Auth::routes(['register' => false,'reset' => false]);
+Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
 
@@ -65,8 +66,13 @@ Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.
 
 
 //後台管理系統的Route，群組之後統一在admin做中介認證
-Route::prefix('admin')->middleware(['auth'])->group(function(){
+//修改為 除了登入之外，還是要role為admin或者是super_admin身分才可以
 
+//原本的方法，只要求需要登入才能看後台
+// Route::prefix('admin')->middleware(['auth'])->group(function(){
+
+//修改後，必須要登入以及admin  admin給業主
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function(){
 
     //最新消息管理
     Route::get('news', 'NewsController@index');
@@ -83,5 +89,17 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::get('items/edit/{id}', 'ItemController@edit');
     Route::post('items/update/{id}', 'ItemController@update');
     Route::get('items/destroy/{id}', 'ItemController@destroy');
+
+});
+
+//super_admin為開發端
+Route::prefix('admin')->middleware(['auth', 'super_admin'])->group(function(){
+
+    //帳號管理
+    Route::get('account', 'AccountController@index');
+    Route::get('account/create', 'AccountController@create');
+    Route::post('account/store', 'AccountController@store');
+    Route::post('account/destroy/{id}', 'AccountController@destroy');
+
 
 });
