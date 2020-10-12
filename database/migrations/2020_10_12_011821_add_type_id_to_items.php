@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemTypesTable extends Migration
+class AddTypeIdToItems extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateItemTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('type_name');
-            $table->timestamps();
+        Schema::table('items', function (Blueprint $table) {
+            // $table->foreign('type_id_f')->references('id')->on('item_types');
+            $table->string('type_id');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateItemTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_types');
+        Schema::table('items', function (Blueprint $table) {
+            $table->dropColumn('type_id');
+        });
     }
 }

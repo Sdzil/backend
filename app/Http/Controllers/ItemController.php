@@ -20,8 +20,10 @@ class ItemController extends Controller
     public function index()
     {
         // $items_list = DB::table('items')->get();
-        $items_type = ItemType::with('items')->get();
-        
+        $items_type = ItemType::with('items_5566')->get();//這邊的items是在model內部設定的函式名稱，不是資料表名稱
+        $abc = Item::with('itemsType_5566')->get();
+        dd($items_type, $abc);
+
         return view('.admin.items.index', compact('items_type'));
     }
 
