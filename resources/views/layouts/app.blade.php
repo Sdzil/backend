@@ -38,8 +38,21 @@
                             <a class="nav-link" href="/admin/news">最新消息管理</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/item_types">產品類型管理</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin/items">產品管理</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/contacts">聯絡表單管理</a>
+                        </li>
+                        @if(Route::middleware(['super_admin']))
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/accounts">帳號管理</a>
+                        </li>
+                        
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -11,9 +11,9 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin">後臺</a></li>
-            <li class="breadcrumb-item"><a href="/admin/items">產品管理</a></li>
-            <li class="breadcrumb-item active" aria-current="page">新增產品</li>
+                <li class="breadcrumb-item"><a href="/admin">後臺</a></li>
+                <li class="breadcrumb-item"><a href="/admin/items">產品管理</a></li>
+                <li class="breadcrumb-item active" aria-current="page">新增產品</li>
             </ol>
         </nav>
 
@@ -31,15 +31,22 @@
                 <input name="price" type="number" class="form-control" id="price" aria-describedby="emailHelp" required>
             </div>
 
-              <div class="form-group">
+            <div class="form-group">
+                <label for="type_id">產品類別</label>
+                <input name="type_id" type="number" class="form-control" id="type_id" aria-describedby="emailHelp" required>
+            </div>
+
+            <div class="form-group">
                 <label for="image_url">上傳照片</label>
                 <input name="image_url" type="file" class="form-control-file" id="image_url" required>
-              </div>
+            </div>
 
-              <div class="form-group">
+            <div class="form-group">
                 <label for="content">內容</label>
                 <textarea name="content" class="form-control" id="content" rows="3" required></textarea>
-              </div>
+            </div>
+
+
             <button type="submit" class="btn btn-primary">送出</button>
         </form>
     </div>

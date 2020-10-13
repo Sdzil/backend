@@ -11,7 +11,7 @@
                 <div class="card-header">帳號管理 - Index</div>
 
                 <div class="card-body">
-                    <a class="btn btn-success" href="/admin/account/create">新增帳號</a>
+                    <a class="btn btn-success" href="/admin/accounts/create">新增帳號</a>
                     <hr>
 
                     <table id="example" class="table table-striped table-bordered" style="width:100%">

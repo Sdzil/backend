@@ -8,7 +8,7 @@
                 <div class="card-header">Create Account</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/admin/account/store">
+                    <form method="POST" action="/admin/accounts/store">
                         @csrf
 
                         <div class="form-group row">

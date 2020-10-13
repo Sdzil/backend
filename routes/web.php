@@ -47,8 +47,8 @@ Route::resource('sample', 'SampleController');
 
 Route::post('sample/update', 'SampleController@update')->name('sample.update');
 
-// Auth::routes(['register' => false,'reset' => false]);
-Auth::routes();
+Auth::routes(['register' => false,'reset' => false]);
+// Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
 
@@ -92,16 +92,33 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function(){
     Route::post('items/update/{id}', 'ItemController@update');
     Route::get('items/destroy/{id}', 'ItemController@destroy');
 
+
+    //產品類別管理
+    Route::get('item_types', 'ItemTypeController@index');
+    Route::get('item_types/create', 'ItemTypeController@create');
+    Route::post('item_types/store', 'ItemTypeController@store');
+    Route::get('item_types/edit/{id}', 'ItemTypeController@edit');
+    Route::post('item_types/update/{id}', 'ItemTypeController@update');
+    Route::get('item_types/destroy/{id}', 'ItemTypeController@destroy');
+
+    //聯絡表單管理
+    Route::get('contacts', 'ContactController@index');
+    Route::get('contacts/create', 'ContactController@create');
+    Route::post('contacts/store', 'ContactController@store');
+    Route::get('contacts/edit/{id}', 'ContactController@edit');
+    Route::post('contacts/update/{id}', 'ContactController@update');
+    Route::get('contacts/destroy/{id}', 'ContactController@destroy');
+
 });
 
 //super_admin為開發端
 Route::prefix('admin')->middleware(['auth', 'super_admin'])->group(function(){
 
     //帳號管理
-    Route::get('account', 'AccountController@index');
-    Route::get('account/create', 'AccountController@create');
-    Route::post('account/store', 'AccountController@store');
-    Route::post('account/destroy/{id}', 'AccountController@destroy');
+    Route::get('accounts', 'AccountController@index');
+    Route::get('accounts/create', 'AccountController@create');
+    Route::post('accounts/store', 'AccountController@store');
+    Route::post('accounts/destroy/{id}', 'AccountController@destroy');
 
 
 });

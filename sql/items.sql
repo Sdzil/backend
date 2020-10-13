@@ -49,5 +49,4 @@ INSERT INTO `items` (`id`, `itemName`, `price`, `image_url`, `content`, `created
 --
 -- AUTO_INCREMENT for table `sample_datas`
 --
-ALTER TABLE `items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+

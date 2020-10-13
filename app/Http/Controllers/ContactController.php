@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Controllers\Auth\RegisterController;
-use App\User;
+use App\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
 
-class AccountController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,14 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $items = User::all();
-        return view('admin.accounts.index',compact('items'));
+        // $items_list = DB::table('items')->get();
+        $contacts = Contact::get();//這邊的items是在model內部設定的函式名稱，不是資料表名稱
+
+        // $abc = Item::with('itemsType_5566')->get();
+
+        // dd($items_type);
+
+        return view('.admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -28,7 +31,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('admin.accounts.create');
+        //
     }
 
     /**
@@ -39,16 +42,8 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request->all());
-        $this->validator($request->all())->validate();
-
-        $this->create_account($request->all());
-
-        // dd($request->all());
-        return redirect('/admin/accounts');
+        //
     }
-
 
     /**
      * Display the specified resource.
@@ -94,34 +89,4 @@ class AccountController extends Controller
     {
         //
     }
-
-    protected function validator(array $data)
-    {
-        //資料驗證，必須要符合這樣的格式
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create_account(array $data)
-    {
-
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role' => $data['role'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
-
-
 }

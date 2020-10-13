@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ItemType extends Model
 {
     protected $table = 'item_types';
-    protected $fillabled = ['type_name'];
+    protected $fillable = ['type_name', 'sort'];
 
     public function items()
     {

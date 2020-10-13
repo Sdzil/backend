@@ -9,7 +9,7 @@ use Yajra\DataTables\DataTables;
 // use Datatables;
 // use Yajra\DataTables\Facades\DataTables as FacadesDataTables;
 
-// use Yajra\DataTables\Contracts\DataTable;
+// use Yajra\DataTables\Contracts\DataTable; 
 
 class SampleController extends Controller
 {
