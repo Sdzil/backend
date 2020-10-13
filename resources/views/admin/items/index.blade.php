@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <style>
         /* .btn-success{
-                font-size: 30px;
-            } */
+                            font-size: 30px;
+                        } */
 
     </style>
 @endsection
@@ -24,6 +24,28 @@
 
         <a href="/admin/items/create" class="btn btn-success sm-3 mb-3">新增產品</a>
 
+
+
+        <table border="0" cellspacing="5" cellpadding="5">
+            <tbody>
+                <tr>
+
+                    <td>
+                        <select name="item_types" id="item_types" name="item_types">
+                            @foreach ($items_type as $type)
+                                <option value="{{$type->id}}">{{$type->type_name}}</option>
+
+                            @endforeach
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Maximum age:</td>
+                    <td><input type="text" id="max" name="max"></td>
+                </tr>
+            </tbody>
+        </table>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -38,7 +60,7 @@
             <tbody>
                 {{-- <br> --}}
                 @foreach ($items_type as $type)
-                {{-- {{$type}} --}}
+                    {{-- {{ $type }} --}}
 
                     @foreach ($type->items as $item)
                         <tr>
@@ -50,7 +72,8 @@
                             <td>{{ $item->content }}</td>
 
                             {{-- 兩種方式都可以顯示商品類別名稱 --}}
-                            {{-- <td>{{ $type->type_name }}</td> --}}
+                            {{-- <td>{{ $type->type_name }}</td>
+                            --}}
                             <td>{{ $item->itemsType->type_name }}</td>
 
                             <td>
@@ -82,8 +105,30 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var min = parseInt($('#item_types').val(), 10);
+                // var max = parseInt($('#max').val(), 10);
+                // var age = parseFloat(data[3]) || 0; // use data for the age column
+
+                // if ((isNaN(min) && isNaN(max)) ||
+                //     (isNaN(min) && age <= max) ||
+                //     (min <= age && isNaN(max)) ||
+                //     (min <= age && age <= max)) {
+                    if(true){
+                    return true;
+                }
+                return false;
+            }
+        );
+
         $(document).ready(function() {
-            $('#example').DataTable();
+            var table = $('#example').DataTable();
+
+            $('#min, #max').keyup(function() {
+                table.draw();
+            });
+
 
             //刪除按鈕套用sweetAlert2
             $("#example").on("click", ".btn-delete", function() {
