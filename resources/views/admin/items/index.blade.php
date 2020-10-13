@@ -36,7 +36,10 @@
                 </tr>
             </thead>
             <tbody>
+                {{-- <br> --}}
                 @foreach ($items_type as $type)
+                {{-- {{$type}} --}}
+
                     @foreach ($type->items as $item)
                         <tr>
                             <td>{{ $item->itemName }}</td>
@@ -45,7 +48,11 @@
                                 <img width="200" src="{{ $item->image_url }}" alt="">
                             </td>
                             <td>{{ $item->content }}</td>
-                            <td>{{ $type->type_name }}</td>
+
+                            {{-- 兩種方式都可以顯示商品類別名稱 --}}
+                            {{-- <td>{{ $type->type_name }}</td> --}}
+                            <td>{{ $item->itemsType->type_name }}</td>
+
                             <td>
                                 <a href="items/edit/{{ $item->id }}" class="btn btn-sm btn-primary">編輯</a>
                                 {{-- <a href="items/destory/{{ $item->id }}"

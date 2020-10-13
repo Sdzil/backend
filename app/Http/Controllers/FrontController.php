@@ -9,8 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Attraction;
-
-
+use App\ItemType;
 
 class FrontController extends Controller
 {
@@ -55,6 +54,33 @@ class FrontController extends Controller
         return view('front/news_info', compact('news_list_all'));
     }
 
+    public function products()
+    {
+        // $news_list_all = DB::table('news')
+        //     ->orderBy('id', 'desc')
+        //     ->paginate(6);
+
+        $product_types = ItemType::with('items')->get();
+
+        return view('front/products', compact('product_types'));
+    }
+
+    public function products_info($abc)
+    {
+        //$abc = title6
+        // $news_list_all = DB::table('news')
+        //     ->where('id', '=', $abc)
+        //     ->first();
+        // dd($news_list_all);
+
+        $product_types = ItemType::with('items')->get();
+
+        return view('front/products_info', compact('product_types'));
+    }
+
+
+
+
     public function contact_us()
     {
         return view('front/contact_us');
@@ -73,7 +99,7 @@ class FrontController extends Controller
     //     Attraction::create($request->all());
     // }
 
-    
+
 
     // public function testfunciotn1()
     // {

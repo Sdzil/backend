@@ -12,9 +12,9 @@ class Item extends Model
         'itemName', 'price', 'image_url', 'content', 'type_id'
     ];
 
-    public function itemsType_5566()
+    public function itemsType()
     {
-        return $this->belongsTo('App\ItemType','id');
+        return $this->belongsTo('App\ItemType','type_id');
     }
 }
 
