@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Attraction;
 use App\Item;
 use App\ItemType;
+use App\Contact;
 
 class FrontController extends Controller
 {
@@ -106,11 +107,23 @@ class FrontController extends Controller
         return view('front/contact_us');
     }
 
+    public function contact_us_group()
+    {
+        return view('front/contact_us_group');
+    }
+
     public function get_form(Request $request)
     {
 
         Attraction::create($request->all());
         return redirect('contact_us');
+    }
+
+    public function get_form_group(Request $request)
+    {
+
+        Contact::create($request->all());
+        return redirect('contact_us_group');
     }
 
     // public function send(Request $request)

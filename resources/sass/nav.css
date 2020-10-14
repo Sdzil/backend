@@ -1,0 +1,216 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", Tahoma, sans-serif;
+  background-image: url(nav/bg.png);
+}
+
+body a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+body a:hover {
+  color: #000000;
+  font-weight: 900;
+}
+
+body li {
+  list-style: none;
+}
+
+body #nav .dflex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #nav .dblock {
+  display: block;
+}
+
+body #nav .magrin-0_auto {
+  margin: 0 auto;
+}
+
+body #nav .container {
+  width: calc(100% - 52px);
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 13px;
+}
+
+body #nav .topnav {
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 98px;
+}
+
+body #nav .topnav .contact_us {
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+body #nav .topnav .contact_us .contact_us-icon {
+  margin: 0 10px 0 0;
+}
+
+body #nav .topnav .contact_us:hover {
+  background-color: #ffffff;
+}
+
+body #nav .topnav .contact_us:hover .contact_us-icon {
+  content: url(nav/contact_us-icon-hover-1920.png);
+}
+
+body #nav .topnav .contact_us:hover a {
+  color: #000000;
+}
+
+body #nav .topnav .navbar_logo {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+}
+
+body #nav .topnav .rightSideBar {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+body #nav .topnav .rightSideBar .shoppingCart {
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+body #nav .topnav .rightSideBar .shoppingCart .shoppingCart-icon {
+  margin: 0 10px -5px 0;
+}
+
+body #nav .topnav .rightSideBar .shoppingCart:hover {
+  background: #ffffff;
+}
+
+body #nav .topnav .rightSideBar .shoppingCart:hover .shoppingCart-icon {
+  content: url(nav/nav_shopping-hover.png);
+}
+
+body #nav .topnav .rightSideBar .shoppingCart:hover a {
+  color: #000000;
+}
+
+body #nav .topnav .login {
+  margin: 0 20px 10px 0;
+  padding: 10px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+body #nav .topnav .login .login-icon {
+  margin: 0 0 -4px 0;
+}
+
+body #nav .topnav .login:hover {
+  background: #ffffff;
+}
+
+body #nav .topnav .login:hover .login-icon {
+  content: url(nav/nav_login-hover.png);
+}
+
+body #nav .topnav .login:hover a {
+  color: #000000;
+}
+
+body #nav .topnav .live-icon:hover {
+  content: url(nav/live-hover.png);
+}
+
+body #nav .topnav .live-icon {
+  -webkit-animation-name: live;
+          animation-name: live;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+@-webkit-keyframes live {
+  0% {
+    content: url(nav/live.png);
+  }
+  50% {
+    content: url(nav/live-hover.png);
+  }
+  100% {
+    content: url(nav/live.png);
+  }
+}
+
+@keyframes live {
+  0% {
+    content: url(nav/live.png);
+  }
+  50% {
+    content: url(nav/live-hover.png);
+  }
+  100% {
+    content: url(nav/live.png);
+  }
+}
+
+body hr {
+  margin: 0 0 0px 0;
+  height: 2px;
+  background: white;
+}
+
+body .bottonnav {
+  width: calc(100% - 728px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .bottonnav .bottonnav_item {
+  float: left;
+  width: 25%;
+  text-align: center;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+body .bottonnav .bottonnav_item .bottonnav_item-link {
+  font-weight: 700;
+  width: 25%;
+  height: 50px;
+  line-height: 50px;
+}
+
+body .bottonnav .bottonnav_item:hover {
+  background-color: #ffffff;
+}
+
+body .bottonnav .bottonnav_item:hover a {
+  color: #000000;
+}
+/*# sourceMappingURL=nav.css.map */

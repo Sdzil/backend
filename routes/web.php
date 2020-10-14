@@ -34,6 +34,10 @@ Route::get('/contact_us', "FrontController@contact_us");
 
 Route::post('/get_something', "FrontController@get_form");
 
+Route::get('/contact_us_group', "FrontController@contact_us_group");
+
+Route::post('/send_form', "FrontController@get_form_group");
+
 //登入驗證測試
 // Route::get('/admin', "LoginController@admin")->middleware('auth');
 
