@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Attraction;
+use App\Item;
 use App\ItemType;
 
 class FrontController extends Controller
@@ -65,7 +66,7 @@ class FrontController extends Controller
         return view('front/products', compact('product_types'));
     }
 
-    public function products_info($abc)
+    public function product_info($product_id)
     {
         //$abc = title6
         // $news_list_all = DB::table('news')
@@ -73,11 +74,30 @@ class FrontController extends Controller
         //     ->first();
         // dd($news_list_all);
 
-        $product_types = ItemType::with('items')->get();
+        // $product_types = ItemType::with('items')->get();
 
-        return view('front/products_info', compact('product_types'));
+        $products = Item::find($product_id);
+        // dd($products);
+
+
+        return view('front/product_info', compact('products'));
     }
 
+
+    public function product_types($product_type_id)
+    {
+        // $news_list_all = DB::table('news')
+        //     ->orderBy('id', 'desc')
+        //     ->paginate(6);
+
+        $product_type = ItemType::find($product_type_id);
+
+        $products = $product_type->items;
+        // dd($product_types, $products);
+
+
+        return view('front/product_type', compact('product_type', 'products'));
+    }
 
 
 

@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <style>
         /* .btn-success{
-                            font-size: 30px;
-                        } */
+                                    font-size: 30px;
+                                } */
 
     </style>
 @endsection
@@ -26,25 +26,27 @@
 
 
 
-        <table border="0" cellspacing="5" cellpadding="5">
+    <table border="0" cellspacing="5" cellpadding="5">
             <tbody>
                 <tr>
 
                     <td>
-                        <select name="item_types" id="item_types" name="item_types">
+                     <select name="item_types" id="item_types" name="item_types">
                             @foreach ($items_type as $type)
-                                <option value="{{$type->id}}">{{$type->type_name}}</option>
+                                <option class="item_type_id" value="{{ $type->id }}">{{ $type->type_name }}</option>
 
                             @endforeach
 
                         </select>
-                    </td>
+                       </td>
                 </tr>
                 <tr>
                     <td>Maximum age:</td>
                     <td><input type="text" id="max" name="max"></td>
                 </tr>
+
             </tbody>
+
         </table>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -105,28 +107,55 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        $.fn.dataTable.ext.search.push(
-            function(settings, data, dataIndex) {
-                var min = parseInt($('#item_types').val(), 10);
-                // var max = parseInt($('#max').val(), 10);
-                // var age = parseFloat(data[3]) || 0; // use data for the age column
-
-                // if ((isNaN(min) && isNaN(max)) ||
-                //     (isNaN(min) && age <= max) ||
-                //     (min <= age && isNaN(max)) ||
-                //     (min <= age && age <= max)) {
-                    if(true){
-                    return true;
-                }
-                return false;
-            }
-        );
-
+        // $.fn.dataTable.ext.search.push(
+        //     function(settings, data, dataIndex) {
+        //         var type = parseInt($('.item_type_id').val(), 10);
+        //         console.log(type);
+        //         // var max = parseInt($('#max').val(), 10);
+        //         var typeName = parseFloat(data[4]) || 0; // use data for the typename column
+        //         console.log(typeName);
+        //         // if ((isNaN(min) && isNaN(max)) ||
+        //         //     (isNaN(min) && age <= max) ||
+        //         //     (min <= age && isNaN(max)) ||
+        //         //     (min <= age && age <= max)) {
+        //         if (typeName == 0) {
+        //             return true;
+        //         }
+        //         return false;
+        //     }
+        // );
+        // 當我們要不斷的更換.fn.dataTable.ext.search.push()中的方法的時候，需要在上一次篩選結束後使用.fn.dataTable.ext.search.push()中的方法的時候，需要在上一次篩選結束後使用.fn.dataTable.ext.search.pop()彈出之前的搜索方法。
         $(document).ready(function() {
-            var table = $('#example').DataTable();
+            // var table = $('#example').DataTable();
 
-            $('#min, #max').keyup(function() {
-                table.draw();
+            // $('.item_type_id').on('keyup', function() {
+            //     //觸發篩選
+            //     table.draw();
+            // });
+
+
+            $('#example').DataTable({
+                initComplete: function() {
+                    this.api().columns().every(function() {
+                        var column = $('#item_types');
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function() {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function(d, j) {
+                            select.append('<option value="' + d + '">' + d +
+                                '</option>')
+                        });
+                    });
+                }
             });
 
 

@@ -46,13 +46,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/contacts">聯絡表單管理</a>
                         </li>
-                        @if(Route::middleware(['super_admin']))
+                        {{-- 顯示：{{Auth::user()}} --}}
+                        {{-- @if( Auth::user()->role == 'super_admin' ) --}}
 
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/accounts">帳號管理</a>
                         </li>
-                        
-                        @endif
+
+                        {{-- @endif --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->

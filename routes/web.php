@@ -26,7 +26,9 @@ Route::get('/news_info/{something}', "FrontController@news_info");
 
 Route::get('/products', "FrontController@products");
 
-Route::get('/products/{something}', "FrontController@product_info");
+Route::get('/product_info/{something}', "FrontController@product_info");
+
+Route::get('/product_type/{something}', "FrontController@product_types");
 
 Route::get('/contact_us', "FrontController@contact_us");
 

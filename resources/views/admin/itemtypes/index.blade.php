@@ -48,13 +48,13 @@
                         </tr>
                     @endforeach
             </tbody>
-            <tfoot>
+            {{-- <tfoot>
                 <tr>
                     <th>產品類別名稱</th>
                     <th>權重</th>
                     <th>功能</th>
                 </tr>
-            </tfoot>
+            </tfoot> --}}
         </table>
     </div>
 @endsection
