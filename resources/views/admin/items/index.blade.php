@@ -33,7 +33,7 @@
                     <td>
                         {{-- <form action=""> --}}
                     <select name="item_types" id="item_types">
-                        <option id="item_type_0" value="0"></option>
+                        <option id="item_type_0" value="0">全部商品</option>
                         @foreach ($items_type as $type)
                             <option id="item_type_{{$type->id}}" value="{{ $type->type_name }}">{{ $type->type_name }}</option>
                         @endforeach
@@ -130,7 +130,7 @@
         $(document).ready(function() {
             var table = $('#example').DataTable();
 
-            $('#item_types').on('keyup change', function() {
+            $('#item_types').on('change', function() {
                 //觸發篩選
                 table.draw();
                 console.log('5566');

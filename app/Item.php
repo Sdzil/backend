@@ -16,5 +16,10 @@ class Item extends Model
     {
         return $this->belongsTo('App\ItemType','type_id');
     }
+
+    public function productImg()
+    {
+        return $this->hasMany('App\ProductImg','product_id', 'id');
+    }
 }
 

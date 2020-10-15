@@ -56,7 +56,7 @@ Route::post('sample/update', 'SampleController@update')->name('sample.update');
 Auth::routes(['register' => false,'reset' => false]);
 // Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->name('home');
+
 
 //controller在5.3板之後已不推薦使用，所以改用resource或者get或post
 // Route::controller('/datatables', 'DatatablesController', [
@@ -79,8 +79,11 @@ Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.
 //原本的方法，只要求需要登入才能看後台
 // Route::prefix('admin')->middleware(['auth'])->group(function(){
 
+    Route::get('/admin', 'HomeController@index')->name('home');
+
 //修改後，必須要登入以及admin  admin給業主
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
+
 
     //最新消息管理
     Route::get('news', 'NewsController@index');
@@ -118,7 +121,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function(){
 });
 
 //super_admin為開發端
-Route::prefix('admin')->middleware(['auth', 'super_admin'])->group(function(){
+Route::prefix('admin')->middleware(['super_admin'])->group(function(){
 
     //帳號管理
     Route::get('accounts', 'AccountController@index');

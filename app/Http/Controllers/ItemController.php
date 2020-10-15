@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\ItemType;
+use App\ProductImg;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,26 @@ class ItemController extends Controller
             $requestData['image_url'] = $path;
         }
 
-        Item::create($requestData);
+        //新增之後順便取得ID
+        $id =  Item::create($requestData)->id;
+
+        if($request->hasFile('imgs'))
+        {
+            $files = $request->file('imgs');
+            foreach ($files as $file) {
+                //上傳圖片
+                $path = $this->fileUpload($file,'product_imgs');
+                //新增資料進DB
+                $product_img = new ProductImg;
+                $product_img->product_id = $id;
+                $product_img->img_url = $path;
+                $product_img->save();
+
+            }
+        }
+
+
+
         return redirect('admin/items');
     }
 
@@ -78,9 +98,11 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
+        // dd($id);
         $edit_items = Item::find($id);
-        // dd($edit_news);
-        return view('admin.items.edit', compact('edit_items'));
+        $item_imgs = $edit_items->productImg;
+        // dd($edit_items);
+        return view('admin.items.edit', compact('edit_items', 'item_imgs'));
     }
 
     /**
