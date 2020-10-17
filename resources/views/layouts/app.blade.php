@@ -20,6 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('css')
 
+
+
 </head>
 
 <body>
@@ -41,28 +43,72 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         {{-- @auth --}}
-                            {{-- @if (Auth::user() && Auth::user()->role == 'admin') --}}
+                            @if (Auth::user() && (Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'))
 
 
-                            <li class="nav-item">
+                            <li class="nav-item m-1">
+                                <a class="nav-link" href="#">SEO管理(有時間再說)</a>
+                            </li>
+                            <li class="nav-item dropdown m-1">
+                                {{-- <a class="nav-link" href="#">首頁形象管理</a> --}}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="caret">首頁形象管理</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        Banner
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        有需要改動的頁面的Content
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        總之不知道哪邊的內文
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item m-1">
                                 <a class="nav-link" href="/admin/news">最新消息管理</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/item_types">產品類型管理</a>
+                            <li class="nav-item m-1">
+                                <a class="nav-link" href="/admin/events">活動管理</a>
                             </li>
-                            <li class="nav-item">
+
+                            <li class="nav-item dropdown m-1">
+                                {{-- <a class="nav-link" href="/admin/item_types">產品類型管理</a> --}}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="caret">產品類別管理</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/admin/productTypes/1">
+                                        第一層
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/productTypes/2">
+                                        第二層
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/productTypes/3">
+                                        第三層
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item m-1">
                                 <a class="nav-link" href="/admin/items">產品管理</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-1">
                                 <a class="nav-link" href="/admin/contacts">聯絡表單管理</a>
                             </li>
-                            {{-- @if (Auth::user()->role == 'super_admin') --}}
+                            <li class="nav-item m-1">
+                                <a class="nav-link" href="/admin/orders">訂單管理</a>
+                            </li>
+                            @if (Auth::user() && Auth::user()->role == 'super_admin')
 
-                                <li class="nav-item">
+                                <li class="nav-item m-1">
                                     <a class="nav-link" href="/admin/accounts">帳號管理</a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @endif --}}
+
+                            @endif
+                            @endif
                         {{-- @endauth --}}
 
                     </ul>

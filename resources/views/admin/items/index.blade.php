@@ -57,6 +57,8 @@
                     <th>圖片</th>
                     <th>內文</th>
                     <th>產品類別</th>
+                    <th>權重</th>
+
                     <th width="100">功能</th>
                 </tr>
             </thead>
@@ -77,7 +79,8 @@
                             {{-- 兩種方式都可以顯示商品類別名稱 --}}
                             {{-- <td>{{ $type->type_name }}</td>
                             --}}
-                            <td>{{ $item->itemsType->type_name }}</td>
+                            <td>{{ $type->type_name }}</td>
+                            <td>{{ $item->sort }}</td>
 
                             <td>
                                 <a href="items/edit/{{ $item->id }}" class="btn btn-sm btn-primary">編輯</a>
@@ -126,9 +129,13 @@
                 return false;
             }
         );
-        // 當我們要不斷的更換.fn.dataTable.ext.search.push()中的方法的時候，需要在上一次篩選結束後使用.fn.dataTable.ext.search.push()中的方法的時候，需要在上一次篩選結束後使用.fn.dataTable.ext.search.pop()彈出之前的搜索方法。
+        // 當我們要不斷的更換.fn.dataTable.ext.search.push()中的方法的時候，
+        //需要在上一次篩選結束後使用.fn.dataTable.ext.search.push()中的方法的時候，
+        //需要在上一次篩選結束後使用.fn.dataTable.ext.search.pop()彈出之前的搜索方法。
         $(document).ready(function() {
-            var table = $('#example').DataTable();
+            var table = $('#example').DataTable({
+                "order": [[ 5, "desc" ],[1, "desc"]],
+            });
 
             $('#item_types').on('change', function() {
                 //觸發篩選

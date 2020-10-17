@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\IsSuperAdmin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
 
     /**
      * Where to redirect users after login.
@@ -42,11 +44,16 @@ class LoginController extends Controller
     //根據使用者身分，如果登入後是管理者，就進管理者頁面
     //如果只是一般使用者，導回前端頁面
     protected function authenticated(Request $request, $user)
+    // protected function authenticated(Request $request)
     {
-        if ( $user->is_admin ) {
+
+
+        // if ( $user->is_admin ) {
+        if ( $user->role == 'super_admin' || $user->role == 'admin') {
             return redirect('/admin');
         }
 
+        // dd($user->role);
         return redirect('/');
     }
 }

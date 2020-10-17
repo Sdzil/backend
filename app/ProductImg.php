@@ -10,5 +10,10 @@ class ProductImg extends Model
         'img_url', 'product_id', 'sort'
     ];
 
-    
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
+
 }

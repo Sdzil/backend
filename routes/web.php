@@ -69,8 +69,8 @@ Auth::routes(['register' => false,'reset' => false]);
 //     'getIndex' => 'datatables'
 // ]);
 
-Route::get('datatables', 'DatatablesController@getIndex');
-Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.data');
+// Route::get('datatables', 'DatatablesController@getIndex');
+// Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.data');
 
 
 //後台管理系統的Route，群組之後統一在admin做中介認證
@@ -84,6 +84,7 @@ Route::get('datatables.data', 'DatatablesController@anyData')->name('datatables.
 //修改後，必須要登入以及admin  admin給業主
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
 
+    // Route::get('/', 'HomeController@index')->name('home');
 
     //最新消息管理
     Route::get('news', 'NewsController@index');
@@ -99,7 +100,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
     Route::post('items/store', 'ItemController@store');
     Route::get('items/edit/{id}', 'ItemController@edit');
     Route::post('items/update/{id}', 'ItemController@update');
-    Route::get('items/destroy/{id}', 'ItemController@destroy');
+    Route::get('items/destroy/{id}/{name?}', 'ItemController@destroy');
+
+    Route::post('/ajax_upload_img', 'ItemController@ajax_upload_img');
+    Route::post('/ajax_delete_img', 'ItemController@ajax_delete_img');
+    Route::post('/ajax_delete_img_in_DB', 'ItemController@ajax_delete_img_in_DB');
+
 
 
     //產品類別管理

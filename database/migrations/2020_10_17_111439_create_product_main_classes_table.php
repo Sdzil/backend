@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductImgsTable extends Migration
+class CreateProductMainClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateProductImgsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_imgs', function (Blueprint $table) {
+        Schema::create('product_main_classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('img_url');
-            $table->string('product_id');
-            $table->string('sort')->default(0);
+            $table->string('mainClassName');
+            $table->string('sort');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateProductImgsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_imgs');
+        Schema::dropIfExists('product_main_classes');
     }
 }

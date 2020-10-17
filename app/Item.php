@@ -14,7 +14,11 @@ class Item extends Model
 
     public function itemsType()
     {
-        return $this->belongsTo('App\ItemType','type_id');
+        // $dd = $this->belongsTo('App\ItemType', 'type_id', 'id');
+        // $cc = $this->belongsTo('App\ItemType','id');
+        // dd($dd);
+
+        return $this->belongsTo('App\ItemType','id');
     }
 
     public function productImg()
