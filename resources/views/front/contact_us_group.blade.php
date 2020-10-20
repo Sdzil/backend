@@ -13,7 +13,7 @@
 <nav>
 
 
-    <banner>
+    <div id="banner">
 
         <div id="contact_nav">
             <div id="contact_banner">
@@ -26,11 +26,11 @@
 
             </div>
         </div>
-    </banner>
+    </div id="banner">
 
 </nav>
 
-<content>
+<div id="content">
 
 
     <div id="contact_us">
@@ -158,7 +158,7 @@
     </div>
 
     </div>
-</content>
+</div>
 
 <footer>
     <div id="all_footer">

@@ -1,0 +1,35 @@
+@media (max-width: 1280px) {
+    #sectionmaue #leftmaue {
+        width: 100%;
+        height: 900px;
+    }
+    #sectionmaue #rightmaue {
+        width: 100%;
+    }
+    #sectionmaue #rightmaue .mauebox {
+        width: 50%;
+        height: 500px;
+    }
+    #sectioncard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        margin:0;
+    }
+    #sectioncard .leftbox{
+        width: 100%;
+
+    }
+    #sectioncard .rightbox{
+        width: 100%;
+    }
+
+    #bigcard_section .black_decoration{
+        display: none;
+    }
+
+    #bigcard_section #bigcard{
+        width: 100%;
+
+    }
+}

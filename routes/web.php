@@ -20,6 +20,8 @@ Route::get('/', "FrontController@index");
 
 // Route::get('/index', "FrontController@index");
 
+Route::get('/index_group', "FrontController@index_group");
+
 Route::get('/news', "FrontController@news");
 
 Route::get('/news_info/{something}', "FrontController@news_info");

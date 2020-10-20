@@ -126,6 +126,10 @@ class FrontController extends Controller
         return redirect('contact_us_group');
     }
 
+    public function index_group()
+    {
+        return view('front/index html');
+    }
     // public function send(Request $request)
     // {
 
